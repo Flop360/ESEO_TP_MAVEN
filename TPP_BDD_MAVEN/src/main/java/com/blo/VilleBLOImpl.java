@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.bean.CoordonneesGPS;
 import com.bean.Ville;
@@ -18,13 +17,13 @@ public class VilleBLOImpl {
 
 	
 	
-	public List<Ville> getVilles() throws IOException {
+	public ArrayList<Ville> getVilles() throws IOException {
 		File file = new File(RESOURCES_PATH + VILLES_FILE_NAME);
 		FileReader fr = new FileReader(file);
 
 		CSVReader csvReader = new CSVReader(fr, SEPARATOR);
 
-		List<String[]> data = new ArrayList<String[]>();
+		ArrayList<String[]> data = new ArrayList<String[]>();
 
 		String[] nextLine = null;
 		while ((nextLine = csvReader.readNext()) != null) {
@@ -46,7 +45,7 @@ public class VilleBLOImpl {
 			data.add(nextLine);
 		}
 
-		List<Ville> villes = new ArrayList<Ville>();
+		ArrayList<Ville> villes = new ArrayList<Ville>();
 
 		for (String[] oneData : data) {
 			String code_commune_INSEE = oneData[0];
@@ -63,7 +62,7 @@ public class VilleBLOImpl {
 			Ville ville = new Ville(code_commune_INSEE, nom_commune, libelle_acheminement, code_postal, ligne_5, coord);
 			villes.add(ville);
 		}
-
+		csvReader.close();
 		return villes;
 
 	}

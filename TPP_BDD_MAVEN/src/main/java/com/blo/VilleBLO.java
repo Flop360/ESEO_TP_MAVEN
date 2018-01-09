@@ -1,12 +1,12 @@
 package com.blo;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 import com.bean.Ville;
 
 public interface VilleBLO {
 
-	public List<Ville> getVilles() throws IOException;
+	public ArrayList<Ville> getVilles() throws IOException;
 	
 }
