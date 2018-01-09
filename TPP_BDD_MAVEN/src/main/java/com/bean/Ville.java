@@ -72,6 +72,13 @@ public class Ville {
 	public void setCode_postal(String code_postal) {
 		this.code_postal = code_postal;
 	}
+
+	@Override
+	public String toString() {
+		return "Ville [code_commune_INSEE=" + code_commune_INSEE + ", nom_commune=" + nom_commune
+				+ ", libelle_acheminement=" + libelle_acheminement + ", code_postal=" + code_postal + ", ligne_5="
+				+ ligne_5 + ", coordonnees_gps=" + coordonnees_gps + "]";
+	}
 	
 			
 }

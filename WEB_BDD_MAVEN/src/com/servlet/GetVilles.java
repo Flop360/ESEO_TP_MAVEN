@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bean.*;
-import com.dao.VilleDAO;
+import com.dao.VilleDAOImpl;
 
 /**
  * Servlet implementation class GetVilles
@@ -20,10 +20,10 @@ import com.dao.VilleDAO;
 public class GetVilles extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final String VUE = "/ville.jsp";
+	private static final String VUE = "/WEB-INF/ville.jsp";
 	private static final String ATT_LIST_VILLE = "listVilles";
 
-	VilleDAO villeDAO;
+	VilleDAOImpl villeDAO = new VilleDAOImpl();
 	List<Ville> villes = new ArrayList<Ville>();
 
 	/**

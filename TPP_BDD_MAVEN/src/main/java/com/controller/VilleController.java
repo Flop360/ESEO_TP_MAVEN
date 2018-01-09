@@ -3,7 +3,6 @@ package com.controller;
 import com.blo.VilleBLO;
 import com.dao.VilleDAO;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import com.bean.Ville;
@@ -17,12 +16,7 @@ public class VilleController {
 		ArrayList<Ville> listVilleBlo = new ArrayList<Ville>();
 		ArrayList<Ville> listVilleDao = new ArrayList<Ville>();
 		
-		try {
-			listVilleBlo = villesBLO.getVilles();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		listVilleBlo = villesBLO.getVilles();
 		listVilleDao = villesDAO.trouverVilles();
 		
 		listVilleBlo.removeAll(listVilleDao);

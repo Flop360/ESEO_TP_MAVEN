@@ -6,7 +6,6 @@ public class CoordonneesGPS {
 	private String longitude;
 	
 	public CoordonneesGPS(String latitude, String longitude) {
-		super();
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
@@ -25,6 +24,11 @@ public class CoordonneesGPS {
 	}
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
+	}
+
+	@Override
+	public String toString() {
+		return "CoordonneesGPS [latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
 	
 }

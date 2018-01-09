@@ -18,10 +18,8 @@ public class VilleDAOImpl implements VilleDAO{
 		ArrayList<Ville> listVilles = new ArrayList<Ville>();
 
 		try {
-			// Connection con = JDBCConfigurationSol2.getConnection();
 			Connection con = JDBCConfiguration.getConnection();
 			Statement statement = con.createStatement();
-
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM villes");
 			while (resultSet.next()) {
 				Ville ville = new Ville();
@@ -79,7 +77,7 @@ public class VilleDAOImpl implements VilleDAO{
 			// Connection con = JDBCConfigurationSol2.getConnection();
 			Connection con = JDBCConfiguration.getConnection();
 			PreparedStatement statement = con.prepareStatement(
-					"UPDATE ville SET nom_commune = ?, code_postal = ?,libelle_acheminement = ?, ligne_5 = ?, latitude = ?, longitude = ? WHERE code_commune_INSEE=?");
+					"UPDATE villes SET nom_commune = ?, code_postal = ?,libelle_acheminement = ?, ligne_5 = ?, latitude = ?, longitude = ? WHERE code_commune_INSEE=?");
 			for(Ville ville : villes) {
 			statement.setString(1, ville.getNom_commune());
 			statement.setString(2, ville.getCode_postal());
@@ -95,6 +93,39 @@ public class VilleDAOImpl implements VilleDAO{
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public ArrayList<Ville> trouverVilles(String code_commune_INSEE) {
+		ArrayList<Ville> listVilles = new ArrayList<Ville>();
+
+		try {
+			// Connection con = JDBCConfigurationSol2.getConnection();
+			Connection con = JDBCConfiguration.getConnection();
+			Statement statement = con.createStatement();
+
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM villes WHERE code_commune_INSEE = "+code_commune_INSEE);
+			while (resultSet.next()) {
+				Ville ville = new Ville();
+
+				ville.setCode_commune_INSEE(resultSet.getString("code_commune_INSEE"));
+				ville.setNom_commune(resultSet.getString("nom_commune"));
+				ville.setLibelle_acheminement(resultSet.getString("libelle_acheminement"));
+				ville.setCode_postal(resultSet.getString("code_postal"));
+				ville.setLigne_5(resultSet.getString("ligne_5"));
+				CoordonneesGPS coordonnees_gps = new CoordonneesGPS(resultSet.getString("latitude"), resultSet.getString("longitude"));
+				ville.setCoordonnees_gps(coordonnees_gps);
+
+				listVilles.add(ville);
+			}
+			resultSet.close();
+			statement.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listVilles;
+
 	}
 
 }
