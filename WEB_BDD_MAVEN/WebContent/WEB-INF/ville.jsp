@@ -18,7 +18,7 @@
 
 
 <script defer src="js/fontawesome-all.js"></script>
-<script src="https://code.jquery.com/ui/1.9.0/jquery-ui.js"
+<script src="https://code.jquery.com/ui/1.9.1/jquery-ui.js"
 	integrity="sha256-BX2qlDN922gJsGwDJRhytK0MSxXflk+de/NR4ayQY8A="
 	crossorigin="anonymous"></script>
 <script
@@ -51,7 +51,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${listVilles}" var="ville">
+						<c:forEach items="${listVilles}" var="ville" varStatus="loop">
 							<tr>
 								<td>${ville.code_commune_INSEE}</td>
 								<td>${ville.nom_commune}</td>
@@ -61,7 +61,7 @@
 								<td>${ville.coordonnees_gps.latitude}</td>
 								<td>${ville.coordonnees_gps.longitude}</td>
 								<td><input class="single-checkbox" type="checkbox"
-									name="villes" value="${ville.code_commune_INSEE}"></td>
+									name="villes${loop.index}" value="${ville}"></td>
 							</tr>
 						</c:forEach>
 					</tbody>

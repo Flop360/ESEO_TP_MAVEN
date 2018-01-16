@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bean.Ville;
+
 /**
  * Servlet implementation class GetDistance
  */
@@ -35,7 +37,25 @@ public class GetDistance extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	    Map params = request.getParameterMap();
+
+	    Iterator i = params.keySet().iterator();
+	   
+	    List<Ville> villes = new ArrayList<Ville>();
+
+	    while ( i.hasNext() )
+
+	      {
+	    	 Ville ville = new Ville();
+
+	        String key = (String) i.next();
+	        System.out.println(key);
+
+//	        Ville value = (Ville) params.get( key ))[ 0 ];
+//	        villes.add(value);
+//	        System.out.println(value.toString());
+
+	      }
+	    }
 
 }
