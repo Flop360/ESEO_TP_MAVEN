@@ -61,7 +61,7 @@
 								<td>${ville.coordonnees_gps.latitude}</td>
 								<td>${ville.coordonnees_gps.longitude}</td>
 								<td><input class="single-checkbox" type="checkbox"
-									name="villes${loop.index}" value="${ville}"></td>
+									name="villes${loop.index}" value="${ville.coordonnees_gps.latitude}-${ville.coordonnees_gps.longitude}"></td>
 							</tr>
 						</c:forEach>
 					</tbody>
