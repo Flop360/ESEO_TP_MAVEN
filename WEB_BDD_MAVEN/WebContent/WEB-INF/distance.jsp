@@ -28,7 +28,7 @@
 
 <body>
 	<h1 class="text-center">La distance entre les 2 villes est :
-		${distance} Km/h</h1>
+		${distance} Km</h1>
 	<div class="row">
 		<a href="GetVilles" class="btn btn-primary">Retour à l'accueil</a>
 	</div>
