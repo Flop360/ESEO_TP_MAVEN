@@ -43,7 +43,7 @@ public class TestVilleDAOImpl {
 		String nom_commune = "MAZÉ-MILON";
 		String code_postal= "49630";
 		String libelle = "MAZE-MILON";
-		String ligne5 = "MAZE City";
+		String ligne5 = "MAZE-City";
 		String latitude = "49.14821";
 		String longitude = "3.14";
 		Ville ville = new Ville();
