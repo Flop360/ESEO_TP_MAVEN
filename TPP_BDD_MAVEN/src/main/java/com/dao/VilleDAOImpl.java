@@ -79,7 +79,6 @@ public class VilleDAOImpl implements VilleDAO{
 
 	}
 
-
 	@Override
 	public void ajouterVilles(ArrayList<Ville> villes) {
 
@@ -129,6 +128,25 @@ public class VilleDAOImpl implements VilleDAO{
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public void supprimerVilles(ArrayList<Ville> villes) {
+		try {
+			// Connection con = JDBCConfigurationSol2.getConnection();
+			Connection con = JDBCConfiguration.getConnection();
+			PreparedStatement statement = con.prepareStatement(
+					"Delete FROM 'villes' WHERE nom_commune=?, code_postal=? and ligne_5=?");
+			for(Ville ville : villes) {
+			statement.setString(1, ville.getNom_commune());
+			statement.setString(2, ville.getCode_postal());
+			statement.setString(4, ville.getLigne_5());
+			statement.executeUpdate();
+			}
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
